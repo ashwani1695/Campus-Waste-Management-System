@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f4f0;
+  margin: 0;
+  padding: 0;
+}
+
+.form-container, .profile-container, .task-container {
+  max-width: 400px;
+  margin: 3rem auto;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #2e7d32;
+}
+
+input, select, button {
+  width: 100%;
+  padding: 0.7rem;
+  margin: 0.5rem 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #2e7d32;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+}
+
+button:hover {
+  background-color: #1b5e20;
+}
+
+    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Assigned Tasks</title>
+  
+</head>
+<body>
+  <div class="task-container">
+    <h2>Your Assigned Tasks</h2>
+    <ul id="taskList">
+      <!-- Tasks will be dynamically inserted here -->
+    </ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

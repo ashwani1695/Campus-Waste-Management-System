@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bin Locations - Campus Waste Management</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background-color: #f0f8f5;
+      color: #333;
+    }
+
+    h1 {
+      color: #2e7d32;
+      text-align: center;
+    }
+
+    .bin-list {
+      max-width: 600px;
+      margin: 2rem auto;
+    }
+
+    .bin-list ul {
+      list-style: disc;
+      padding-left: 1.5rem;
+    }
+
+    .bin-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    #map {
+      height: 500px;
+      width: 100%;
+      max-width: 1000px;
+      margin: 2rem auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Smart Bin Locations</h1>
+  <p style="text-align:center;">Explore the locations of smart bins across Tezpur University campus below:</p>
+
+  <div class="bin-list">
+    <ul>
+      <li>Main Academic Building – Near Entrance</li>
+      <li>Hostel Block A – Main Gate</li>
+      <li>Hostel Block C – Rear Garden</li>
+      <li>Canteen Area – Near Handwash Station</li>
+      <li>Library – Front Porch</li>
+      <li>Admin Block – Parking Area</li>
+    </ul>
+  </div>
+
+  <div id="map"></div>
+
+  <!-- Google Maps API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUGTHKo7v1u9I62tOgnyNqN8e6ylFOAms&callback=initMap" async defer></script>
+
+  <script>
+    function initMap() {
+      const campusCenter = { lat: 26.7194, lng: 92.7848 }; // Approximate center of Tezpur University
+
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 16,
+        center: campusCenter,
+        mapTypeId: 'roadmap'
+      });
+
+      const binLocations = [
+        { name: "Main Academic Building", position: { lat: 26.7211, lng: 92.7842 } },
+        { name: "Hostel Block A", position: { lat: 26.7200, lng: 92.7865 } },
+        { name: "Hostel Block C", position: { lat: 26.7190, lng: 92.7855 } },
+        { name: "Canteen Area", position: { lat: 26.7208, lng: 92.7825 } },
+        { name: "Library", position: { lat: 26.7215, lng: 92.7838 } },
+        { name: "Admin Block", position: { lat: 26.7220, lng: 92.7852 } }
+      ];
+
+      binLocations.forEach(bin => {
+        new google.maps.Marker({
+          position: bin.position,
+          map: map,
+          title: bin.name
+        });
+      });
+    }
+  </script>
+
+</body>
+</html>
