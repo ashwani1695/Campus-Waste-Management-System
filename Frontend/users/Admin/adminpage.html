@@ -1,0 +1,121 @@
+<!-- Modified adminpage.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard - Campus Waste Management</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f7;
+    }
+
+    .navbar {
+      background-color: #2e7d32;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2e7d32;
+      margin-bottom: 2rem;
+    }
+
+    .admin-actions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background-color: #e8f5e9;
+      border: 1px solid #c8e6c9;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .card i {
+      font-size: 2rem;
+      color: #2e7d32;
+      margin-bottom: 0.5rem;
+    }
+
+    .card button {
+      margin-top: 1rem;
+      padding: 0.6rem 1rem;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .card button:hover {
+      background-color: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h1>Admin Dashboard</h1>
+    <div><a href="homepage.html" style="color: white; text-decoration: underline;">Back to Home</a></div>
+  </nav>
+
+  <div class="container">
+    <h2>Welcome, Admin</h2>
+    <div class="admin-actions">
+      <div class="card">
+        <i class="fas fa-user-plus"></i>
+        <h3>Create Cleaner Account</h3>
+        <a href="create_cleaner.html"><button>Create</button></a>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-tasks"></i>
+        <h3>Assign Cleaning Task</h3>
+        <a href="assign_task.html"><button>Assign</button></a>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3>Track Cleaner</h3>
+        <a href="track_cleaner.html"><button>Track</button></a>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-download"></i>
+        <h3>Download Reports</h3>
+        <a href="report_generate.html"><button>Download</button></a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

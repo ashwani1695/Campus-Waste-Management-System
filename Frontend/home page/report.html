@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Report Issues - Campus Waste Management</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff;
+    }
+
+    .wrapper {
+      flex: 1;
+    }
+
+    .navbar {
+      background-color: #2e7d32;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      color: #fff;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1rem;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 0.4rem 1rem;
+    }
+
+    .nav-links li a:hover {
+      background: #a5d6a7;
+      color: #1b5e20;
+      border-radius: 4px;
+    }
+
+    .contact {
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
+    }
+
+    input, textarea, input[type="file"] {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.6rem 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: inherit;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: none;
+      height: 120px;
+    }
+
+    button {
+      background-color: #2e7d32;
+      color: white;
+      padding: 0.7rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: #1b5e20;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .social-icons {
+      margin-top: 0.5rem;
+    }
+
+    .social-icons a {
+      color: #fff;
+      margin: 0 0.5rem;
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      color: #a5d6a7;
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <nav class="navbar">
+  <div style="display: flex; align-items: center; gap: 10px;">
+    <img src="../media/Tezpur_University_logo.png" alt="Tezpur University Logo" style="height: 40px;" />
+    <h1 style="margin: 0;">Campus Waste Management System</h1>
+  </div>
+  <ul class="nav-links">
+    <li><a href="homepage.html">Home</a></li>
+    <li><a href="awareness.html">Awareness</a></li>
+    <li><a href="binlocation.html">Bin Location</a></li>
+    <li><a href="report.html">Report</a></li>
+    <li><a href="login.html" class="btn">Login</a></li>
+  </ul>
+</nav>
+
+
+    <section class="contact">
+      <h2>Report Issues</h2>
+      <form onsubmit="handleSubmit(event)">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" required></textarea>
+        <input type="file" accept="image/*" title="Upload Photo (optional)" />
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2025 Tezpur University | Developed by Ashwani Kumar</p>
+  </footer>
+
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+      alert('Message and photo sent successfully!');
+    }
+
+    console.log("Contact page loaded");
+  </script>
+</body>
+</html>

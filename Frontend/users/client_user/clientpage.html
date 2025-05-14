@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Dashboard - Campus Waste Management</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f4f0;
+    }
+
+    .navbar {
+      background-color: #2e7d32;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+
+    .navbar h1 {
+      margin: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1rem;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 0.4rem 1rem;
+    }
+
+    .nav-links li a:hover {
+      background: #a5d6a7;
+      color: #1b5e20;
+      border-radius: 4px;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card i {
+      font-size: 2rem;
+      color: #2e7d32;
+      margin-bottom: 0.5rem;
+    }
+
+    .card h3 {
+      color: #2e7d32;
+      margin-bottom: 1rem;
+    }
+
+    .card a {
+      text-decoration: none;
+      color: #1b5e20;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #1b5e20;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h1>User Dashboard</h1>
+    <ul class="nav-links">
+      <li><a href="user_report.html">Report Issue</a></li>
+      <li><a href="user_track_issues.html">Track Issues</a></li>
+      <li><a href="user_guidelines.html">Guidelines</a></li>
+      <li><a href="user_announcements.html">Announcements</a></li>
+      <li><a href="user_profile.html">My Profile</a></li>
+    </ul>
+  </nav>
+
+  <main class="dashboard">
+    <div class="card">
+      <i class="fas fa-pen"></i>
+      <h3>📝 Report an Issue</h3>
+      <p>Report broken bins, overflow, inaccessible areas, etc.</p>
+      <a href="user_report.html">Report Now</a>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-chart-line"></i>
+      <h3>📊 Track My Issues</h3>
+      <p>View status of previously reported issues.</p>
+      <a href="user_track_issues.html">Track Issues</a>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-book-open"></i>
+      <h3>📘 Guidelines & Awareness</h3>
+      <p>Learn rules for segregation and waste disposal tips.</p>
+      <a href="user_guidelines.html">Read Guidelines</a>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-user"></i>
+      <h3>⚙️ My Profile</h3>
+      <p>Manage your details and view issue history.</p>
+      <a href="user_profile.html">Go to Profile</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Tezpur University | Developed by Ashwani Kumar</p>
+  </footer>
+</body>
+</html>

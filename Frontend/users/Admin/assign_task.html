@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Assign Cleaning Task</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f7;
+    }
+
+    .navbar {
+      background-color: #2e7d32;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #2e7d32;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    input {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 100%;
+    }
+
+    button {
+      padding: 0.6rem;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    button:hover {
+      background-color: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h1>Assign Task</h1>
+    <div><a href="adminpage.html" style="color: white; text-decoration: underline;">Back to Dashboard</a></div>
+  </nav>
+
+  <div class="container">
+    <h2>Assign Cleaning Task</h2>
+    <form id="assignForm">
+      <label>Cleaner ID: <input type="text" required></label>
+      <label>Task Description: <input type="text" required></label>
+      <label>Location: <input type="text" required></label>
+      <button type="submit">Assign Task</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("assignForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Task assigned successfully!");
+    });
+  </script>
+</body>
+</html>

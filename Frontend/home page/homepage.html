@@ -15,6 +15,12 @@
       font-family: 'Segoe UI', sans-serif;
       background-color: #f4f4f4;
       color: #333;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body > *:not(footer) {
+      flex-shrink: 0;
     }
 
     .navbar {
@@ -52,7 +58,7 @@
       text-align: center;
       padding-top: 8rem;
       background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
-                  url('background project.jpg') no-repeat center/cover;
+                  url('../media/background\ project.jpg') no-repeat center/cover;
     }
 
     .hero h2 {
@@ -80,7 +86,7 @@
       text-align: center;
     }
 
-    .about, .facilities, .bin-location, .gallery, .preview-features, .updates, .impact {
+    .about, .facilities, .bin-location, .gallery, .preview-features, .impact {
       background-color: #e8f5e9;
       margin-bottom: 1rem;
       border-radius: 10px;
@@ -116,13 +122,31 @@
       color: #1b5e20;
     }
 
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+
     footer {
       background-color: #1b5e20;
       color: #fff;
       text-align: center;
       padding: 1rem;
-      margin: 0;
-      border: none;
+      margin-top: auto;
     }
 
     .social-icons {
@@ -142,7 +166,6 @@
       transform: scale(1.2);
     }
 
-    /* Brush Style Heading */
     .brush-heading {
       display: inline-block;
       font-size: 2.5rem;
@@ -177,13 +200,15 @@
 
   <!-- Navigation -->
   <nav class="navbar">
-    <h1>Campus Waste Management System</h1>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <img src="../media/Tezpur_University_logo.png" alt="Tezpur University Logo" style="height: 40px;" />
+      <h1 style="margin: 0;">Campus Waste Management System</h1>
+    </div>
     <ul class="nav-links">
       <li><a href="homepage.html">Home</a></li>
-      <li><a href="features.html">Features</a></li>
       <li><a href="awareness.html">Awareness</a></li>
-      <li><a href="report.html">Report</a></li>
       <li><a href="binlocation.html">Bin Location</a></li>
+      <li><a href="report.html">Report</a></li>
       <li><a href="login.html" class="btn">Login</a></li>
     </ul>
   </nav>
@@ -205,57 +230,32 @@
     We believe that small changes can lead to big impacts. Together, let’s build a waste-free campus for a better tomorrow.</p>
   </section>
 
-  <!-- Facilities -->
-  <section class="facilities">
-    <h2 class="brush-heading">Facilities</h2>
-    <p>We offer smart bins, waste segregation units, recycling centers, and eco-friendly workshops to encourage sustainable practices among students and staff.</p>
-  </section>
-
-  <!-- Bin Location -->
-  <section class="bin-location">
-    <h2 class="brush-heading">Bin Location</h2>
-    <p>Smart bins have been strategically placed across academic blocks, hostels, and common areas. Use our interactive map on the "Bin Location" page to find the nearest smart bin.</p>
-  </section>
-
   <!-- Gallery -->
   <section class="gallery">
     <h2 class="brush-heading">Gallery</h2>
-    <p>Explore moments from our cleanliness drives, workshops, and volunteer activities that bring our vision of a greener campus to life.</p>
-  </section>
-
-  <!-- Latest Updates -->
-  <section class="updates">
-    <h2 class="brush-heading">Latest Updates</h2>
-    <p>🚮 30 new smart bins installed across campus.<br>🧹 Cleanup drive successfully conducted on 5th April 2025.</p>
+    <div class="gallery-grid">
+      <img src="../media/image_1.jpeg" alt="Cleanliness Drive 1">
+      <img src="../media/image_2.jpg" alt="Workshop on Waste Management">
+      <img src="../media/image_3.jpg" alt="Volunteer Group Photo">
+      <img src="../media/image_4.jpg" alt="Smart Bin Installation">
+    </div>
   </section>
 
   <!-- Impact Statistics -->
   <section class="impact">
-    <h2 class="brush-heading">Our Impact</h2>
-    <div class="stats">
-      <div><h3>100+</h3><p>Issues Resolved</p></div>
-      <div><h3>500+</h3><p>Volunteers Engaged</p></div>
-      <div><h3>20%</h3><p>Reduction in Litter</p></div>
-    </div>
-  </section>
+  <h2 class="brush-heading">Our Impact</h2>
+  <div class="stats">
+    <div><h3>35+</h3><p>Smart Bins Installed</p></div>
+    <div><h3>5+</h3><p>local community clean-up drives initiated</p></div>
+    <div><h3>15+</h3><p>Awareness Events</p></div>
+    <div><h3>700+</h3><p>Participants Engaged</p></div>
+  </div>
+</section>
+
 
   <!-- Footer -->
   <footer>
     <p>© 2025 Tezpur University | Developed by Ashwani Kumar</p>
-    <div class="social-icons">
-      <a href="https://in.linkedin.com/in/ashwani-kumar-80495a258" target="_blank" title="LinkedIn">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="https://www.instagram.com/ashwani_kr._?igsh=ejhqYjF6Z3ZpOG5z" target="_blank" title="Instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://www.facebook.com/ashwani.kumarsingh.10485?mibextid=rS40aB7S9Ucbxw6v" target="_blank" title="Facebook">
-        <i class="fab fa-facebook"></i>
-      </a>
-      <a href="mailto:ashwani1692005@gmail.com" title="Gmail">
-        <i class="fas fa-envelope"></i>
-      </a>
-    </div>
   </footer>
 
 </body>

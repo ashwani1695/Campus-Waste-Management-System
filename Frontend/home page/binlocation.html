@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bin Locations - Campus Waste Management</title>
+
+  <!-- Font Awesome for social icons (same as homepage) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body > *:not(footer) {
+      flex-shrink: 0;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      background-color: #2e7d32;
+      padding: 1rem 2rem;
+      color: #fff;
+      align-items: center;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 0.3rem 0.8rem;
+    }
+
+    .nav-links li a:hover {
+      background-color: #a5d6a7;
+      color: #1b5e20;
+      border-radius: 4px;
+    }
+
+    .hero {
+      height: 60vh;
+      color: white;
+      text-align: center;
+      padding-top: 8rem;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+                  url('../media/background project.jpg') no-repeat center/cover;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+    }
+
+    .btn {
+      background-color: #2e7d32;
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 4px;
+      margin-top: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .bin-list {
+      max-width: 600px;
+      margin: 2rem auto;
+    }
+
+    .bin-list ul {
+      list-style: disc;
+      padding-left: 1.5rem;
+    }
+
+    .bin-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    #map {
+      height: 500px;
+      width: 100%;
+      max-width: 1000px;
+      margin: 2rem auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      background-color: #1b5e20;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      margin-top: auto;
+    }
+
+    .social-icons {
+      margin-top: 0.5rem;
+    }
+
+    .social-icons a {
+      color: #fff;
+      margin: 0 0.5rem;
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      color: #a5d6a7;
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar (Same as homepage) -->
+  <nav class="navbar">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <img src="../media/Tezpur_University_logo.png" alt="Tezpur University Logo" style="height: 40px;" />
+      <h1 style="margin: 0;">Campus Waste Management System</h1>
+    </div>
+    <ul class="nav-links">
+      <li><a href="homepage.html">Home</a></li>
+      <li><a href="awareness.html">Awareness</a></li>
+      <li><a href="binlocation.html">Bin Location</a></li>
+      <li><a href="report.html">Report</a></li>
+      <li><a href="login.html" class="btn">Login</a></li>
+    </ul>
+  </nav>
+
+  <!-- Content -->
+  <div class="bin-list">
+    <ul>
+      <li>Main Academic Building – Near Entrance</li>
+      <li>Hostel Block A – Main Gate</li>
+      <li>Hostel Block C – Rear Garden</li>
+      <li>Canteen Area – Near Handwash Station</li>
+      <li>Library – Front Porch</li>
+      <li>Admin Block – Parking Area</li>
+    </ul>
+  </div>
+
+  <!-- Google Map -->
+  <div id="map"></div>
+
+  <!-- Google Maps API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUGTHKo7v1u9I62tOgnyNqN8e6ylFOAms&callback=initMap" async defer></script>
+
+  <script>
+    function initMap() {
+      const campusCenter = { lat: 26.7194, lng: 92.7848 };
+
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 16,
+        center: campusCenter,
+        mapTypeId: 'roadmap'
+      });
+
+      const binLocations = [
+        { name: "Main Academic Building", position: { lat: 26.7211, lng: 92.7842 } },
+        { name: "Hostel Block A", position: { lat: 26.7200, lng: 92.7865 } },
+        { name: "Hostel Block C", position: { lat: 26.7190, lng: 92.7855 } },
+        { name: "Canteen Area", position: { lat: 26.7208, lng: 92.7825 } },
+        { name: "Library", position: { lat: 26.7215, lng: 92.7838 } },
+        { name: "Admin Block", position: { lat: 26.7220, lng: 92.7852 } }
+      ];
+
+      binLocations.forEach(bin => {
+        new google.maps.Marker({
+          position: bin.position,
+          map: map,
+          title: bin.name
+        });
+      });
+    }
+  </script>
+
+</body>
+</html>
