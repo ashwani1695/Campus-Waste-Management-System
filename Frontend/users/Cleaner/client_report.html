@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Report Issue</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f4f0;
+      padding: 2rem;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2e7d32;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    textarea, input {
+      width: 100%;
+      padding: 0.7rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 1rem;
+      background: #2e7d32;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+  <h2>Report an Issue</h2>
+  <form onsubmit="submitReport(event)">
+    <label>
+      Location:
+      <input type="text" required />
+    </label>
+    <label>
+      Describe the Issue:
+      <textarea rows="5" required></textarea>
+    </label>
+    <button type="submit">Submit Report</button>
+    <p id="msg" style="color: green;"></p>
+  </form>
+
+  <script>
+    function submitReport(e) {
+      e.preventDefault();
+      document.getElementById("msg").textContent = "✅ Issue reported successfully!";
+    }
+  </script>
+</body>
+</html>
+  
