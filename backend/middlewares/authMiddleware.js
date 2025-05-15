@@ -3,21 +3,31 @@ const User = require('../models/User'); // Adjust path as needed
 
 // Middleware to authenticate user from token
 const protect = async (req, res, next) => {
-  const authHeader = req.headers.authorization;
+  let token;
 
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(401).json({ message: 'Authentication token missing or invalid' });
+  if (req.cookies && req.cookies.token) {
+    token = req.cookies.token;
+  }
+  else if (req.headers.authorization && req.headers.authorization.startsWith('Bearer ')) {
+    token = req.headers.authorization.split(' ')[1];
   }
 
-  const token = authHeader.split(' ')[1];
+  if (!token) {
+    return res.status(401).json({ message: 'Not authorized, no token' });
+  }
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = await User.findById(decoded.id).select('-password');
-    if (!req.user) return res.status(401).json({ message: 'User not found' });
+    if (!req.user) {
+        res.cookie('token', '', { httpOnly: true, expires: new Date(0), secure: process.env.NODE_ENV === 'production'});
+        return res.status(401).json({ message: 'User not found for token' });
+    }
     next();
   } catch (err) {
-    return res.status(401).json({ message: 'Invalid or expired token' });
+    // Clear cookie if token is invalid/expired
+    res.cookie('token', '', { httpOnly: true, expires: new Date(0), secure: process.env.NODE_ENV === 'production'});
+    return res.status(401).json({ message: 'Token is not valid' });
   }
 };
 
