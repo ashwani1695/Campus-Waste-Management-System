@@ -20,11 +20,11 @@ app.use(express.static(path.join(__dirname, "../Frontend")));
 //routes
 app.use("/auth", require("./routes/authRoute"));
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../Frontend/homepage.html"));
+    res.sendFile(path.join(__dirname, "../Frontend/homepage/homepage.html"));
 });
 
 const port = process.env.PORT;
 
 app.listen(port, () => {
-    console.log(Server is running on http://localhost:${port});
+    console.log(`Server is running on http://localhost:${port}`);
 });

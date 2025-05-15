@@ -113,14 +113,14 @@
     </ul>
   </nav>
 
-  <div class="form-container">
+   <div class="form-container">
     <h2>User Registration</h2>
-    <form onsubmit="submitForm(event)" id="registerForm">
+    <!-- REMOVED onsubmit="submitForm(event)" -->
+    <form id="registerForm">
       <input type="text" id="name" placeholder="Full Name" required />
       <input type="email" id="email" placeholder="Email" required />
       <input type="password" id="password" placeholder="Password" required />
       <input type="password" id="confirm-password" placeholder="Confirm Password" required />
-
       <button type="submit">Register</button>
     </form>
     <p>Already have an account? <a href="login.html">Login here</a>.</p>
@@ -130,25 +130,10 @@
     <p>© 2025 Tezpur University | Developed by Ashwani Kumar</p>
   </footer>
 
-  <script>
-    function submitForm(event) {
-      event.preventDefault();
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      const confirmPassword = document.getElementById("confirm-password").value;
-
-      if (password !== confirmPassword) {
-        alert("Passwords do not match!");
-        return;
-      }
-
-      // Example placeholder: Send form data to backend here
-      console.log("Registering:", { name, email, password });
-
-      alert("Registration successful!");
-      window.location.href = "login.html";
-    }
-  </script>
+  <!-- Make sure script.js is linked. Adjust path if script.js is not in the same directory -->
+  <!-- If login.html and register.html are in /homepage/, and script.js is ALSO in /homepage/ then "script.js" is fine. -->
+  <!-- If script.js is in Frontend/ (one level up from homepage/), then use "../script.js" -->
+  <script src="script.js" defer></script> <!-- Assuming script.js is in the same directory (e.g., Frontend/homepage/script.js) -->
+                                      <!-- Added 'defer' for good practice -->
 </body>
 </html>
