@@ -4,6 +4,12 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const connectDatabase = require('./config/db');
 const path = require('path');
+const fs = require("fs");
+
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir);
+}
 
 dotenv.config();
 connectDatabase();
@@ -15,8 +21,9 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(cookieParser());
-
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(express.static(path.join(__dirname, "../Frontend")));
+
 //routes
 app.use("/auth", require("./routes/authRoute"));
 app.use("/user", require("./routes/userRoute"));

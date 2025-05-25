@@ -97,6 +97,27 @@ const resolveCleanerIssue = async (req, res) => {
   }
 };
 
+const getUsersWithReports = async (req, res) => {
+  try {
+    const users = await User.find({ role: 'user' }); // or exclude 'admin' and 'cleaner'
+
+    const usersWithReports = await Promise.all(users.map(async (user) => {
+      const reports = await Report.find({ reportedBy: user._id }).populate('assignedTo', 'name email');
+      return {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        reports
+      };
+    }));
+
+    res.json(usersWithReports);
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to fetch users and reports', error: err.message });
+  }
+};
+
+
 module.exports = {
   createCleaner,
   assignReportToCleaner,
@@ -105,5 +126,6 @@ module.exports = {
   deleteCompletedReport,
   viewAttendance,
   viewCleanerIssues,
-  resolveCleanerIssue
+  resolveCleanerIssue,
+  getUsersWithReports
 };

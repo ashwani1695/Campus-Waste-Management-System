@@ -1,9 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const adminController = require('../controllers/adminController');
-const { protect, authorizeRoles } = require('../middlewares/authMiddleware');
+const { protect, isAdmin, authorizeRoles } = require('../middlewares/authMiddleware');
 
 router.post('/create-cleaner', protect, authorizeRoles('admin'), adminController.createCleaner);
+
+router.get('/users-reports', protect, isAdmin, adminController.getUsersWithReports);
+
+
 router.put('/assign-report', protect, authorizeRoles('admin'), adminController.assignReportToCleaner);
 router.get('/reports', protect, authorizeRoles('admin'), adminController.viewAllReports);
 router.put('/report-status', protect, authorizeRoles('admin'), adminController.updateReportStatus);
