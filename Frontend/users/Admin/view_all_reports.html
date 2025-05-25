@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>View All User Reports - Admin</title>
+  <style>
+    body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #f4f6f7; }
+    .navbar { background-color: #2e7d32; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .navbar h1 { margin: 0; font-size: 1.5rem; }
+    .navbar a { color: white; text-decoration: none; padding: 0.5em 1em; border-radius: 4px;}
+    .navbar a:hover { background-color: #1b5e20; }
+    .container { max-width: 1200px; margin: 2rem auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+    h2 { text-align: center; color: #2e7d32; margin-bottom: 1rem; }
+    .filter-controls { margin-bottom: 1.5rem; display: flex; gap: 1rem; align-items: center; }
+    .filter-controls label { font-weight: bold; }
+    .filter-controls select, .filter-controls input { padding: 0.5rem; border-radius: 4px; border: 1px solid #ccc; }
+    .report-card { border: 1px solid #ddd; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; background-color: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    .report-card h3 { color: #2e7d32; margin-top: 0; margin-bottom: 0.5rem; }
+    .report-card p { margin: 0.3rem 0; line-height: 1.6; }
+    .report-card strong { color: #333; }
+    .report-card .meta { font-size: 0.9em; color: #555; }
+    .report-card img { max-width: 200px; max-height: 200px; border-radius: 4px; margin-top: 10px; display: block; cursor: pointer; }
+    .actions button, .actions select { margin-right: 5px; padding: 8px 12px; border-radius: 4px; border: none; cursor: pointer; font-size: 0.9em; }
+    .actions .delete-btn { background-color: #e53935; color: white; }
+    .actions .delete-btn:hover { background-color: #c62828; }
+    .actions .status-select { border: 1px solid #ccc; }
+    .actions .assign-btn { background-color: #007bff; color: white; }
+    .actions .assign-btn:hover { background-color: #0056b3; }
+    /* Modal for image preview */
+    .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); }
+    .modal-content { margin: auto; display: block; max-width: 80%; max-height: 80%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    .close-modal { position: absolute; top: 20px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; transition: 0.3s; }
+    .close-modal:hover, .close-modal:focus { color: #bbb; text-decoration: none; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h1>All User Reports</h1>
+    <a href="adminpage.html">Back to Dashboard</a>
+  </nav>
+
+  <div class="container">
+    <h2>User Submitted Reports</h2>
+    <div class="filter-controls">
+        <label for="statusFilter">Filter by Status:</label>
+        <select id="statusFilter">
+            <option value="">All</option>
+            <option value="pending">Pending</option>
+            <option value="assigned">Assigned</option>
+            <option value="in-progress">In-Progress</option>
+            <option value="completed">Completed</option>
+            <option value="rejected">Rejected</option>
+        </select>
+    </div>
+    <div id="reportsContainer">
+      <!-- Reports will be loaded here by admin_script.js -->
+    </div>
+  </div>
+
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal">
+    <span class="close-modal" onclick="closeImageModal()">×</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+
+  <script src="admin_script.js" defer></script>
+</body>
+</html>

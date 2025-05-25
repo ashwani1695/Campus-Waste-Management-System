@@ -4,31 +4,43 @@ const Report = require('../models/Report');
 const submitReport = async (req, res) => {
   try {
     const { title, location, description } = req.body;
-    const imageUrl = req.file ? req.file.path : null;
+    // Ensure file path from multer is correctly handled
+    const imageUrl = req.file ? `/uploads/${req.file.filename}` : null; // Relative path for serving
+
+    if (!title || !location || !description) {
+        return res.status(400).json({ message: 'Title, location, and description are required.' });
+    }
 
     const newReport = new Report({
       title,
       location,
       description,
       imageUrl,
-      user: req.user._id,
+      reportedBy: req.user._id, // Changed from 'user' to 'reportedBy'
+      status: 'pending' // Explicitly set initial status
     });
 
     await newReport.save();
 
-    res.status(201).json({ message: 'Report submitted successfully.' });
+    res.status(201).json({ message: 'Report submitted successfully.', report: newReport });
   } catch (error) {
     console.error('Error submitting report:', error);
-    res.status(500).json({ error: 'Internal server error.' });
+    // Provide more specific error messages if possible
+    if (error.name === 'ValidationError') {
+        return res.status(400).json({ message: 'Validation error', errors: error.errors });
+    }
+    res.status(500).json({ message: 'Internal server error submitting report.' });
   }
 };
 
 const getMyReports = async (req, res) => {
   try {
-    const reports = await Report.find({ user: req.user._id });
+    // Find reports where the 'reportedBy' field matches the logged-in user's ID
+    const reports = await Report.find({ reportedBy: req.user._id }).sort({ createdAt: -1 });
     res.json(reports);
   } catch (err) {
-    res.status(500).json({ message: 'Server error', error: err.message });
+    console.error('Error fetching user reports:', err);
+    res.status(500).json({ message: 'Server error fetching reports', error: err.message });
   }
 };
 

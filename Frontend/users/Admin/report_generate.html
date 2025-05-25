@@ -3,74 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Download Reports</title>
+  <title>Download Reports - Admin</title>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f6f7;
-    }
-
-    .navbar {
-      background-color: #2e7d32;
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .navbar h1 {
-      margin: 0;
-      font-size: 1.5rem;
-    }
-
-    .container {
-      max-width: 600px;
-      margin: 2rem auto;
-      background: white;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-
-    h2 {
-      color: #2e7d32;
-      margin-bottom: 1.5rem;
-    }
-
-    button {
-      padding: 0.8rem 1.2rem;
-      background-color: #2e7d32;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-
-    button:hover {
-      background-color: #1b5e20;
-    }
+    body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #f4f6f7; }
+    .navbar { background-color: #2e7d32; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .navbar h1 { margin: 0; font-size: 1.5rem; }
+    .navbar a { color: white; text-decoration: none; padding: 0.5em 1em; border-radius: 4px;}
+    .navbar a:hover { background-color: #1b5e20; }
+    .container { max-width: 600px; margin: 2rem auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); text-align: center; }
+    h2 { color: #2e7d32; margin-bottom: 1.5rem; }
+    button { padding: 0.8rem 1.2rem; background-color: #2e7d32; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem; }
+    button:hover { background-color: #1b5e20; }
+    p { margin-bottom: 1.5rem; }
   </style>
 </head>
 <body>
   <nav class="navbar">
-    <h1>Download Reports</h1>
-    <div><a href="adminpage.html" style="color: white; text-decoration: underline;">Back to Dashboard</a></div>
+    <h1>Download System Reports</h1>
+    <a href="adminpage.html">Back to Dashboard</a>
   </nav>
 
   <div class="container">
     <h2>Download Reports</h2>
-    <p>You can download recent cleaning and task assignment reports.</p>
-    <button onclick="downloadReport()">Download PDF Report</button>
+    <p>Click the button below to download a PDF summary of all user-submitted waste reports.</p>
+    <button id="downloadPdfButton">Download All User Reports (PDF)</button>
   </div>
 
-  <script>
-    function downloadReport() {
-      alert("Downloading report (simulated).");
-    }
-  </script>
+  <script src="admin_script.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Tasks - Cleaner</title>
+  <style>
+    body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #f0f4f0; padding: 0; }
+    .navbar { background-color: #2e7d32; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .navbar h1 { margin: 0; font-size: 1.5rem; }
+    .navbar a { color: white; text-decoration: none; padding: 0.5em 1em; border-radius: 4px;}
+    .navbar a:hover { background-color: #1b5e20; }
+    .container { max-width: 800px; margin: 2rem auto; background: white; border-radius: 10px; padding: 1.5rem; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h2 { text-align: center; color: #2e7d32; margin-bottom: 1.5rem; }
+    .task-card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; background-color: #fff; }
+    .task-card h3 { color: #1b5e20; margin-top: 0; margin-bottom: 0.5rem; }
+    .task-card p { margin: 0.3rem 0; }
+    .task-card img { max-width: 150px; max-height: 150px; border-radius: 4px; margin-top: 5px; display: block; }
+    .task-actions { margin-top: 10px; }
+    .task-actions select, .task-actions button { padding: 8px 12px; border-radius: 4px; border: 1px solid #ccc; cursor: pointer; margin-right: 10px; }
+    .task-actions button { background-color: #2e7d32; color: white; border-color: #2e7d32; }
+    .task-actions button:hover { background-color: #1b5e20; }
+    .no-tasks { text-align: center; color: #555; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h1>My Assigned Tasks</h1>
+    <a href="cleanerpage.html">Back to Dashboard</a>
+  </nav>
+
+  <div class="container">
+    <h2>Active Tasks (<span id="activeTaskCount">0</span>)</h2>
+    <div id="tasksListContainer">
+      <!-- Tasks will be loaded here by cleaner_script.js -->
+    </div>
+    <p id="noTasksMessage" class="no-tasks" style="display:none;">No active tasks assigned to you currently.</p>
+  </div>
+  <script src="cleaner_script.js" defer></script>
+</body>
+</html>

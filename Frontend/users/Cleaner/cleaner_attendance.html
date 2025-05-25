@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attendance - Cleaner</title>
+  <style>
+    body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #f0f4f0; padding: 0; }
+    .navbar { background-color: #2e7d32; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .navbar h1 { margin: 0; font-size: 1.5rem; }
+    .navbar a { color: white; text-decoration: none; padding: 0.5em 1em; border-radius: 4px;}
+    .navbar a:hover { background-color: #1b5e20; }
+    .container { max-width: 500px; margin: 2rem auto; background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); text-align: center; }
+    h2 { color: #2e7d32; margin-bottom: 1.5rem; }
+    .attendance-actions button { padding: 0.8rem 1.5rem; background-color: #2e7d32; color: white; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer; margin: 0.5rem; min-width: 120px; }
+    .attendance-actions button:hover { background-color: #1b5e20; }
+    .attendance-actions button:disabled { background-color: #ccc; cursor: not-allowed; }
+    .status-message { margin-top: 1.5rem; padding: 1rem; background-color: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 5px; color: #1b5e20; font-weight: bold; }
+    .error-message { background-color: #ffebee; border: 1px solid #ffcdd2; color: #c62828; }
+    #attendanceHistoryContainer { margin-top: 2rem; text-align: left;}
+    #attendanceHistoryContainer h3 { text-align: center; color: #2e7d32; }
+    #attendanceHistoryTable { width: 100%; border-collapse: collapse; margin-top: 1rem;}
+    #attendanceHistoryTable th, #attendanceHistoryTable td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+    #attendanceHistoryTable th { background-color: #e8f5e9; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h1>Daily Attendance</h1>
+    <a href="cleanerpage.html">Back to Dashboard</a>
+  </nav>
+
+  <div class="container">
+    <h2>Mark Your Attendance</h2>
+    <div class="attendance-actions">
+      <button id="checkInButton">Check-In</button>
+      <button id="checkOutButton">Check-Out</button>
+    </div>
+    <div id="attendanceStatusMessage" class="status-message" style="display:none;"></div>
+    
+    <div id="attendanceHistoryContainer">
+        <h3>My Recent Attendance</h3>
+        <table id="attendanceHistoryTable">
+            <thead>
+                <tr><th>Date</th><th>Check-In</th><th>Check-Out</th></tr>
+            </thead>
+            <tbody id="attendanceHistoryBody">
+                <!-- History loaded here -->
+            </tbody>
+        </table>
+        <p id="noHistoryMsg" style="text-align:center; display:none;">No attendance history found.</p>
+    </div>
+  </div>
+  <script src="cleaner_script.js" defer></script>
+</body>
+</html>

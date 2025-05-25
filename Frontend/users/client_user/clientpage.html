@@ -6,10 +6,16 @@
   <title>User Dashboard - Campus Waste Management</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
+        *, *::before, *::after {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background-color: #f0f4f0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     .navbar {
@@ -23,31 +29,68 @@
 
     .navbar h1 {
       margin: 0;
+      font-size: 1.5rem; /* Added for consistency */
+    }
+    
+    .nav-greeting { /* For potential user name display */
+        font-size: 1rem;
+        margin-right: auto; /* Pushes links to the right */
+        margin-left: 20px;
     }
 
     .nav-links {
       display: flex;
       list-style: none;
       gap: 1rem;
+      align-items: center; /* To align buttons and links */
+      margin: 0; /* Reset default ul margin */
+      padding: 0; /* Reset default ul padding */
     }
 
-    .nav-links li a {
+    .nav-links li a, .nav-links li button {
       color: #fff;
       text-decoration: none;
       padding: 0.4rem 1rem;
+      border-radius: 4px; /* Added for consistency */
+      display: inline-flex; /* For icon alignment */
+      align-items: center;
+      gap: 0.5em;
     }
 
-    .nav-links li a:hover {
+    .nav-links li a:hover, .nav-links li button:hover:not(.nav-logout-btn) { /* Exclude logout from this hover */
       background: #a5d6a7;
       color: #1b5e20;
-      border-radius: 4px;
+    }
+    
+    /* Button style for logout for this page */
+    .nav-logout-btn {
+      background-color: #c62828; 
+      color: white; 
+      border:none; 
+      padding: 0.4rem 1rem; /* Match link padding */
+      border-radius: 4px; 
+      cursor:pointer; 
+      font-family: inherit; /* Use same font as links */
+      font-size: inherit; /* Use same font size as links */
+    }
+    .nav-logout-btn:hover {
+      background-color: #a50000;
     }
 
-    .dashboard {
+
+   .dashboard {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      padding: 2rem;
+      /*
+        min(200px, 100%): Cards will be at least 200px, but if the screen is so small that
+        100% width for a single column is less than 200px, it will take that 100% width.
+        This ensures cards become full-width in a single column on very small screens.
+      */
+      grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+      gap: 1rem; /* Slightly reduce gap for better fit on smaller screens */
+      padding: 1rem; /* Reduce padding on smaller screens */
+      flex-grow: 1;
+      width: 100%; /* Ensure dashboard uses full available width */
+      /* overflow-x: hidden; /* Removed from here, applied to body as fallback */
     }
 
     .card {
@@ -57,49 +100,69 @@
       padding: 1.5rem;
       text-align: center;
       transition: transform 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
+      display: flex; /* Using flex for card content */
+      flex-direction: column;
+      justify-content: space-between; /* Pushes link to bottom if content is short */
+      min-width: 0; /* CRUCIAL: Allows grid/flex items to shrink below their content size if necessary */
     }
 
     .card i {
-      font-size: 2rem;
+      font-size: 2.5rem; /* Slightly reduced icon size */
       color: #2e7d32;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem; /* Adjusted margin */
     }
 
     .card h3 {
       color: #2e7d32;
-      margin-bottom: 1rem;
+      margin-top: 0; /* Removed top margin */
+      margin-bottom: 0.75rem; /* Adjusted margin */
+      font-size: 1.15rem; /* Slightly reduced font size */
+    }
+
+    .card p {
+        color: #555;
+        margin-bottom: 1rem;
+        flex-grow: 1; /* Allows paragraph to take available space */
+        font-size: 0.9rem; /* Adjusted for space */
+        line-height: 1.5; /* Improved readability */
     }
 
     .card a {
       text-decoration: none;
       color: #1b5e20;
       font-weight: bold;
+      background-color: #e8f5e9; /* Added a light background to the link button for distinction */
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      margin-top: auto; /* Pushes link to the bottom if it's the last element in flex column */
+      transition: background-color 0.2s;
     }
+    .card a:hover {
+        background-color: #c8e6c9;
+    }
+
 
     footer {
       background-color: #1b5e20;
       color: #fff;
       text-align: center;
       padding: 1rem;
-      position: fixed;
-      bottom: 0;
       width: 100%;
+      flex-shrink: 0; /* Prevent footer from shrinking */
     }
   </style>
 </head>
 <body>
   <nav class="navbar">
     <h1>User Dashboard</h1>
+    <div class="nav-greeting" id="userNameDisplay">Welcome User</div> <!-- Added for user name -->
     <ul class="nav-links">
-      <li><a href="client_report.html">Report Issue</a></li>
-      <li><a href="user_track_issues.html">Track Issues</a></li>
-      <li><a href="user_guidelines.html">Guidelines</a></li>
-      <li><a href="user_announcements.html">Announcements</a></li>
-      <li><a href="user_profile.html">My Profile</a></li>
+      <li><a href="client_report.html"><i class="fas fa-pen"></i> Report Issue</a></li>
+      <li><a href="user_issues.html"><i class="fas fa-chart-line"></i> Track Issues</a></li>
+      <!-- Removed user_guidelines.html and user_announcements.html as they seemed less critical than a Home button -->
+      <!-- Changed "My Profile" to "Home" and updated the link -->
+      <li><a href="/homepage/homepage.html"><i class="fas fa-home"></i> Home</a></li> 
+      <li><button id="logoutButton" class="nav-logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button></li> <!-- Changed to button with ID -->
     </ul>
   </nav>
 
@@ -121,20 +184,50 @@
     <div class="card">
       <i class="fas fa-book-open"></i>
       <h3>📘 Guidelines & Awareness</h3>
-      <p>Learn rules for segregation and waste disposal tips.</p>
-      <a href="user_guidelines.html">Read Guidelines</a>
+      <p>Learn rules for segregation and waste disposal tips from the main site.</p>
+      <a href="/homepage/awareness.html">Read Guidelines</a> <!-- Point to general awareness page -->
     </div>
-<!-- 
-    <div class="card">
-      <i class="fas fa-user"></i>
-      <h3>⚙️ My Profile</h3>
-      <p>Manage your details and view issue history.</p>
-      <a href="user_profile.html">Go to Profile</a>
-    </div> -->
   </main>
 
   <footer>
     <p>© 2025 Tezpur University | Developed by Ashwani Kumar</p>
   </footer>
+  <script>
+    // Basic script to handle logout and display username if available for clientpage.html
+    document.addEventListener('DOMContentLoaded', () => {
+        const userString = localStorage.getItem('user');
+        const userNameDisplay = document.getElementById('userNameDisplay');
+
+        if (userString && userNameDisplay) {
+            try {
+                const user = JSON.parse(userString);
+                userNameDisplay.textContent = `Hi, ${user.name}`;
+            } catch (e) {
+                userNameDisplay.textContent = 'Hi, User';
+            }
+        }
+
+        const logoutBtn = document.getElementById('logoutButton');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', () => {
+                // Assuming logout might involve clearing localStorage or calling an API endpoint
+                // For now, just clears local storage like other logout buttons
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+                alert('Logged out successfully.');
+                window.location.href = '/homepage/login.html'; // Redirect to login
+            });
+        }
+
+        // Check if the user is actually logged in, otherwise redirect
+        const token = localStorage.getItem('token');
+        if (!token) {
+             alert('You are not logged in. Redirecting to login page.');
+             window.location.href = '/homepage/login.html';
+        }
+    });
+  </script>
+  <!-- If client_script.js handles logout or other dynamic parts, ensure it's linked: -->
+  <!-- <script src="client_script.js" defer></script> -->
 </body>
 </html>

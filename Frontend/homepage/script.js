@@ -15,10 +15,12 @@ function handleLogout() {
 
 function updateNavbarAuthUI() {
   const authLinkContainer = document.getElementById('auth-link-container');
+  const getStartedBtn = document.getElementById("getStartedBtn")
   if (!authLinkContainer) return;
 
   const token = localStorage.getItem('token');
   const userString = localStorage.getItem('user');
+  const navButtonPadding = '0.6rem 1.2rem';
 
   if (token && userString) {
     try {
@@ -27,25 +29,29 @@ function updateNavbarAuthUI() {
         const dashboardUrl = getDashboardLink(user.role);
         authLinkContainer.innerHTML = `
           <div style="display: flex; align-items: center; gap: 10px;">
-            <a href="${dashboardUrl}" class="btn" style="display: flex; align-items: center; gap: 8px; text-decoration: none; padding: 0.3rem 0.8rem;">
+            <a href="${dashboardUrl}" class="btn" style="display: flex; align-items: center; gap: 8px; text-decoration: none; margin: 0; padding: ${navButtonPadding};">
               <i class="fas fa-user-circle"></i>
               <span style="color: white;">${user.name}</span>
             </a>
-            <button id="logoutButton" class="btn" style="background-color: #c62828; color: white; padding: 0.3rem 0.8rem;">Logout</button>
+            <button id="logoutButton" class="btn" style="background-color: #c62828; color: white; margin: 0; padding: ${navButtonPadding}">Logout</button>
           </div>
         `;
         const logoutButton = document.getElementById('logoutButton');
         if (logoutButton) logoutButton.addEventListener('click', handleLogout);
+
+              if (getStartedBtn && window.location.pathname.endsWith('homepage.html')) {
+            getStartedBtn.style.display = 'none';
+        }
       } else {
         localStorage.clear();
-        authLinkContainer.innerHTML = '<a href="/homepage/login.html" class="btn">Login</a>';
+        authLinkContainer.innerHTML = `<a href="/homepage/login.html" class="btn" style="padding: ${navButtonPadding};>Login</a>`;
       }
     } catch {
       localStorage.clear();
-      authLinkContainer.innerHTML = '<a href="/homepage/login.html" class="btn">Login</a>';
+      authLinkContainer.innerHTML = `<a href="/homepage/login.html" class="btn" style="padding: ${navButtonPadding};>Login</a>`;
     }
   } else {
-    authLinkContainer.innerHTML = '<a href="/homepage/login.html" class="btn">Login</a>';
+    authLinkContainer.innerHTML = `<a href="/homepage/login.html" class="btn" style="padding: ${navButtonPadding};>Login</a>`;
   }
 }
 

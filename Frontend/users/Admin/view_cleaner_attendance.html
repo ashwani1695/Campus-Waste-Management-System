@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>View Cleaner Attendance - Admin</title>
+  <style>
+    body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #f4f6f7; }
+    .navbar { background-color: #2e7d32; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .navbar h1 { margin: 0; font-size: 1.5rem; }
+    .navbar a { color: white; text-decoration: none; padding: 0.5em 1em; border-radius: 4px;}
+    .navbar a:hover { background-color: #1b5e20; }
+    .container { max-width: 900px; margin: 2rem auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+    h2 { text-align: center; color: #2e7d32; margin-bottom: 2rem; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { text-align: left; padding: 12px; border-bottom: 1px solid #ddd; }
+    th { background-color: #e8f5e9; color: #2e7d32; }
+    tr:hover { background-color: #f1f1f1; }
+    .filter-controls { margin-bottom: 1rem; display: flex; gap: 10px; align-items: center; }
+    .filter-controls input, .filter-controls select { padding: 8px; border-radius: 4px; border: 1px solid #ccc;}
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h1>Cleaner Attendance Records</h1>
+    <a href="adminpage.html">Back to Dashboard</a>
+  </nav>
+
+  <div class="container">
+    <h2>Attendance Log</h2>
+    <div class="filter-controls">
+        <label for="cleanerFilter">Cleaner:</label>
+        <select id="cleanerFilter"><option value="">All Cleaners</option></select>
+        <label for="dateFilter">Date:</label>
+        <input type="date" id="dateFilter">
+        <button onclick="applyAttendanceFilters()">Filter</button>
+         <button onclick="resetAttendanceFilters()">Reset</button>
+    </div>
+    <div id="attendanceTableContainer">
+      <table>
+        <thead>
+          <tr>
+            <th>Cleaner Name</th>
+            <th>Email</th>
+            <th>Date</th>
+            <th>Check-In</th>
+            <th>Check-Out</th>
+            <th>Remarks</th>
+          </tr>
+        </thead>
+        <tbody id="attendanceList">
+          <!-- Attendance records will be loaded here -->
+        </tbody>
+      </table>
+       <p id="noAttendanceMsg" style="text-align:center; display:none;">No attendance records found for the selected filters.</p>
+    </div>
+  </div>
+  <script src="admin_script.js" defer></script>
+</body>
+</html>

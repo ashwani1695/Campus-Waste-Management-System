@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Submitted Issues - Cleaner</title>
+  <style>
+    body { margin:0; font-family: 'Segoe UI', sans-serif; background-color: #f0f4f0; padding:0; }
+    .navbar { background-color: #2e7d32; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .navbar h1 { margin: 0; font-size: 1.5rem; }
+    .navbar a { color: white; text-decoration: none; padding: 0.5em 1em; border-radius: 4px;}
+    .navbar a:hover { background-color: #1b5e20; }
+    .container { max-width: 800px; margin: 2rem auto; background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h2 { text-align: center; color: #2e7d32; margin-bottom: 1.5rem; }
+    .issue-entry { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; background-color: #fff; }
+    .issue-entry h3 { color: #1b5e20; margin-top: 0; margin-bottom: 0.5rem; }
+    .issue-entry p { margin: 0.3rem 0; }
+    .issue-entry .status-pending { color: orange; font-weight: bold; }
+    .issue-entry .status-resolved { color: green; font-weight: bold; }
+    .no-issues { text-align: center; color: #555; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h1>My Submitted Issues</h1>
+    <a href="cleanerpage.html">Back to Dashboard</a>
+  </nav>
+
+  <div class="container">
+    <h2>Status of My Reports</h2>
+    <div id="myIssuesListContainer">
+      <!-- Issues submitted by this cleaner will be loaded here -->
+    </div>
+    <p id="noMyIssuesMessage" class="no-issues" style="display:none;">You have not submitted any issues.</p>
+  </div>
+  <script src="cleaner_script.js" defer></script>
+</body>
+</html>

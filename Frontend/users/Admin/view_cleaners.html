@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>View Cleaners - Admin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #f4f6f7; }
+    .navbar { background-color: #2e7d32; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .navbar h1 { margin: 0; font-size: 1.5rem; }
+    .navbar a { color: white; text-decoration: none; padding: 0.5em 1em; border-radius: 4px;}
+    .navbar a:hover { background-color: #1b5e20; }
+    .container { max-width: 900px; margin: 2rem auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+    h2 { text-align: center; color: #2e7d32; margin-bottom: 2rem; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { text-align: left; padding: 12px; border-bottom: 1px solid #ddd; }
+    th { background-color: #e8f5e9; color: #2e7d32; }
+    tr:hover { background-color: #f1f1f1; }
+    button { padding: 0.5rem 1rem; background-color: #2e7d32; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9rem; }
+    button:hover { background-color: #1b5e20; }
+    .tasks-container { margin-top: 2rem; padding: 1rem; background-color: #f9f9f9; border-radius: 5px; }
+    .tasks-container h3 { color: #2e7d32; }
+    .task-item { border-bottom: 1px dashed #ccc; padding: 0.5rem 0; }
+    .task-item:last-child { border-bottom: none; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h1>View Cleaners</h1>
+    <a href="adminpage.html">Back to Dashboard</a>
+  </nav>
+
+  <div class="container">
+    <h2>Registered Cleaners</h2>
+    <div id="cleanersTableContainer">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Joined On</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="cleanersList">
+          <!-- Cleaners will be loaded here by admin_script.js -->
+        </tbody>
+      </table>
+    </div>
+    <div id="cleanerTasksContainer" class="tasks-container" style="display:none;">
+        <h3>Tasks for <span id="selectedCleanerName"></span></h3>
+        <div id="tasksForCleanerList"></div>
+        <button onclick="closeTasksView()">Close Tasks View</button>
+    </div>
+  </div>
+  <script src="admin_script.js" defer></script>
+</body>
+</html>

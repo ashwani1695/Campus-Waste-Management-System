@@ -1,4 +1,3 @@
-<!-- Modified adminpage.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,114 +6,82 @@
   <title>Admin Dashboard - Campus Waste Management</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f6f7;
-    }
-
-    .navbar {
-      background-color: #2e7d32;
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .navbar h1 {
-      margin: 0;
-      font-size: 1.5rem;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 2rem auto;
-      background: white;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    h2 {
-      text-align: center;
-      color: #2e7d32;
-      margin-bottom: 2rem;
-    }
-
-    .admin-actions {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .card {
-      background-color: #e8f5e9;
-      border: 1px solid #c8e6c9;
-      padding: 1.5rem;
-      border-radius: 8px;
-      text-align: center;
-      transition: transform 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    }
-
-    .card i {
-      font-size: 2rem;
-      color: #2e7d32;
-      margin-bottom: 0.5rem;
-    }
-
-    .card button {
-      margin-top: 1rem;
-      padding: 0.6rem 1rem;
-      background-color: #2e7d32;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .card button:hover {
-      background-color: #1b5e20;
-    }
+    body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #f4f6f7; }
+    .navbar { background-color: #2e7d32; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .navbar h1 { margin: 0; font-size: 1.5rem; }
+    .navbar a { color: white; text-decoration: none; padding: 0.5em 1em; border-radius: 4px;}
+    .navbar a:hover { background-color: #1b5e20; }
+    .container { max-width: 1200px; margin: 2rem auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+    h2 { text-align: center; color: #2e7d32; margin-bottom: 2rem; }
+    .admin-actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+    .card { background-color: #e8f5e9; border: 1px solid #c8e6c9; padding: 1.5rem; border-radius: 8px; text-align: center; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); }
+    .card i { font-size: 2.5rem; color: #2e7d32; margin-bottom: 1rem; display: block; }
+    .card h3 { color: #333; margin-bottom: 0.5rem; font-size: 1.2rem; }
+    .card p { font-size: 0.9rem; color: #555; margin-bottom: 1rem; }
+    .card a button { width: 100%; padding: 0.7rem 1rem; background-color: #2e7d32; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9rem; transition: background-color 0.2s ease; }
+    .card a button:hover { background-color: #1b5e20; }
+    .user-info { color: white; font-weight: bold; }
+    .logout-btn { background-color: #c62828; color: white; border:none; padding: 0.5em 1em; border-radius: 4px; cursor:pointer; }
+    .logout-btn:hover{ background-color: #a50000; }
   </style>
 </head>
 <body>
   <nav class="navbar">
     <h1>Admin Dashboard</h1>
-    <div><a href="homepage.html" style="color: white; text-decoration: underline;">Back to Home</a></div>
+    <div>
+        <span id="adminName" class="user-info">Welcome, Admin</span>
+        <a href="/homepage/homepage.html" style="margin-left: 15px;">Home</a>
+        <button id="logoutButton" class="logout-btn" style="margin-left: 15px;">Logout</button>
+    </div>
   </nav>
 
   <div class="container">
-    <h2>Welcome, Admin</h2>
+    <h2 id="welcomeMessage">Admin Actions</h2>
     <div class="admin-actions">
       <div class="card">
         <i class="fas fa-user-plus"></i>
-        <h3>Create Cleaner Account</h3>
-        <a href="create_cleaner.html"><button>Create</button></a>
+        <h3>Create Cleaner</h3>
+        <p>Register new cleaner accounts.</p>
+        <a href="create_cleaner.html"><button>Go to Create</button></a>
       </div>
-
+      <div class="card">
+        <i class="fas fa-users"></i>
+        <h3>View Cleaners</h3>
+        <p>List all registered cleaners.</p>
+        <a href="view_cleaners.html"><button>View Cleaners</button></a>
+      </div>
+       <div class="card">
+        <i class="fas fa-clipboard-list"></i>
+        <h3>All User Reports</h3>
+        <p>View all issues reported by users.</p>
+        <a href="view_all_reports.html"><button>View Reports</button></a>
+      </div>
       <div class="card">
         <i class="fas fa-tasks"></i>
-        <h3>Assign Cleaning Task</h3>
-        <a href="assign_task.html"><button>Assign</button></a>
+        <h3>Assign Tasks</h3>
+        <p>Assign pending user reports to cleaners.</p>
+        <a href="assign_task.html"><button>Assign Tasks</button></a>
       </div>
-
       <div class="card">
-        <i class="fas fa-map-marker-alt"></i>
-        <h3>Track Cleaner</h3>
-        <a href="track_cleaner.html"><button>Track</button></a>
+        <i class="fas fa-calendar-check"></i>
+        <h3>View Attendance</h3>
+        <p>Monitor cleaner check-in/out records.</p>
+        <a href="view_cleaner_attendance.html"><button>View Attendance</button></a>
       </div>
-
       <div class="card">
-        <i class="fas fa-download"></i>
+        <i class="fas fa-exclamation-triangle"></i>
+        <h3>Cleaner Issues</h3>
+        <p>View and resolve issues reported by cleaners.</p>
+        <a href="view_cleaner_issues_admin.html"><button>View Cleaner Issues</button></a>
+      </div>
+      <div class="card">
+        <i class="fas fa-file-pdf"></i>
         <h3>Download Reports</h3>
+        <p>Generate and download PDF summaries.</p>
         <a href="report_generate.html"><button>Download</button></a>
       </div>
+       <!-- Track Cleaner was a bit vague, integrated into view_cleaners and viewing their tasks -->
     </div>
   </div>
   <script src="admin_script.js" defer></script>
