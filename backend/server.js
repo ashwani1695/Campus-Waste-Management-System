@@ -19,6 +19,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "../Frontend")));
 //routes
 app.use("/auth", require("./routes/authRoute"));
+app.use("/user", require("./routes/userRoute"));
+app.use("/admin", require("./routes/adminRoute"));
+app.use("/cleaner", require("./routes/cleanerRoute"));
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../Frontend/homepage/homepage.html"));
 });
